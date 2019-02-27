@@ -8,6 +8,7 @@ import catalogRu from '../i18n/ru/messages'
 import catalogUk from '../i18n/uk/messages'
 
 import Routing from './Routing'
+import { Header } from './common'
 
 const catalogs = {
   en: catalogEn,
@@ -19,6 +20,11 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
+  palette: {
+    primary: {
+      main: '#ffcad4'
+    }
+  }
 });
 
 const App = () => {
@@ -26,7 +32,10 @@ const App = () => {
     <MuiThemeProvider theme={theme}>
       <I18nProvider language="ru" catalogs={catalogs}>
         <Router>
-          <Routing />
+          <>
+            <Header />
+            <Routing />
+          </>
         </Router>
       </I18nProvider>
     </MuiThemeProvider>

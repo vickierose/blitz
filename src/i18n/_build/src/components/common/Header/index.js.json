@@ -1,0 +1,18 @@
+{
+  "Sign Up": {
+    "origin": [
+      [
+        "src/components/common/Header/index.js",
+        17
+      ]
+    ]
+  },
+  "Log In": {
+    "origin": [
+      [
+        "src/components/common/Header/index.js",
+        18
+      ]
+    ]
+  }
+}
