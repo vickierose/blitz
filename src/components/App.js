@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {Fragment} from 'react';
+import Title from './Title';
+import Board from './Board';
 
 const App = () => {
   return (
-    <div>here will be blitz</div>
+    <Fragment>
+      <Title levelNumber={1} levelName="Data types"/>
+      <Board />
+    </Fragment>
   )
 }
 
