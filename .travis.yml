@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - "node_modules"
+
+install: npm install
+
+script:
+  - npm run build
+
+before_deploy:
+  - test $TRAVIS_TEST_RESULT = 0
+    && cp -f .gitignore-heroku .gitignore
+    && git add .
+    && git commit -m "build ${TRAVIS_BUILD_NUMBER}"
+
+deploy: 
+  provider: heroku
+  api_key:
+    secure: $HEROKU_KEY
+  app: vickierose-blitz
+  skip_cleanup: true
