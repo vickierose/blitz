@@ -5,10 +5,10 @@ cache:
   directories:
     - "node_modules"
 
-install: yarn install
+install: npm install
 
 script:
-  - yarn build
+  - npm run build
 
 before_deploy:
   - test $TRAVIS_TEST_RESULT = 0
