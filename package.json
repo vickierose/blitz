@@ -5,6 +5,7 @@
   "repository": "git@github.com:vickierose/blitz.git",
   "author": "Viktoriia Chernyshuk <viktoriya.chernyshuk@lasoft.org>",
   "license": "MIT",
+  "engines" : { "node" : ">=0.10.3 <11.10.0" },
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production"
