@@ -1,8 +1,8 @@
 {
-  "name": "ink-platform-fe",
+  "name": "blitz",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:vickierose/ink-platform-fe.git",
+  "repository": "git@github.com:vickierose/blitz.git",
   "author": "Viktoriia Chernyshuk <viktoriya.chernyshuk@lasoft.org>",
   "license": "MIT",
   "scripts": {
