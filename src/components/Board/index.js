@@ -4,15 +4,14 @@ import Card from '../Card';
 import './styles.scss';
 
 class Board extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  };
-  }
+  state = {}
   render() {
     return (
       <section className="board">
-        <Card />
-        <Card />
+        {
+          this.props.cards
+          .sort((a, b) => 0.5 - Math.random())
+          .map((card, i) => <Card text={card} key={i}/>)}
       </section>
     );
   }
