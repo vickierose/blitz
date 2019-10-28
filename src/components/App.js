@@ -4,7 +4,7 @@ import Board from './Board';
 
 class App extends Component {
   state = {
-    level: {
+    level1: {
       title: "Data Types. Operators",
       number: 1,
       items: [
@@ -30,13 +30,35 @@ class App extends Component {
         "Difference between var, let and const"
       ]
     },
+    level2: {
+      title: "Statements and Syntax. Functions and Scope",
+      number: 2,
+      items: [
+        "Object.is(+0, -0)\nObject.is(NaN, NaN)",
+        "[1, 2, 3, 'hello'].toString()",
+        "Type Symbol",
+        "when should we use if, ? : , switch case?",
+        "What will happen?\nlet i = 0;\nwhile (i < 3) {\nalert( i );}",
+        "Is there any difference:\nfor (let i = 0; i < 3; i++) {alert(i)}\nfor (let i = 0; i < 3; ++i) {alert(i)}",
+        "break and continue in loops",
+        "Can we use break and continue with ternar operator? What will happen if we do?",
+        "Types of functions aka Possible ways of declaring a function",
+        "Key features of arrow functions",
+        "How to iterate through object properties?",
+        "https://gist.github.com/vickierose/15fa7ff3aca1b7ffa9ed1cc8b9471dfd",
+        "For what do we need call and apply?",
+        "What is a function scope?",
+        "What is closure?",
+        "https://gist.github.com/vickierose/90b69cb1c192a9e12d213279d5500d1b"
+      ]
+    }
   }
   render() {
-    const { level } = this.state;
+    const { level2 } = this.state;
     return (
       <Fragment>
-      <Title levelNumber={level.number} levelName={level.title}/>
-      <Board cards={level.items}/>
+      <Title levelNumber={level2.number} levelName={level2.title}/>
+      <Board cards={level2.items}/>
     </Fragment>
     );
   }

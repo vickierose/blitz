@@ -13,7 +13,11 @@ class Card extends Component {
         className={`card-wrap${this.state.isTurned ? ' turned' : ''}`}
         onClick={this.rotate}
       >
-        <div className="side front">{this.props.text}</div>
+        <div className="side front">{
+          this.props.text.indexOf('http') === 0 ?
+          <a href={this.props.text} target="blank">{this.props.text}</a> :
+          this.props.text
+        }</div>
         <div className="side back">BLITZ</div>
       </section>
     );
