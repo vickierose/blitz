@@ -1,0 +1,14 @@
+@keyframes rotating {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.main-loader {
+  font-size: 70px;
+  font-family: 'Underdog', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: rotating 4s linear infinite;
+}

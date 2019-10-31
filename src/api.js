@@ -1,5 +1,5 @@
 export const getLevel = (levelNumber) => {
-  fetch(`http://localhost:3000/levels/${levelNumber}`)
+  return fetch(`${process.env.API_BASE_URL}/levels/${levelNumber}`)
   .then(res => res.json())
   .catch(err => console.log(err))
 }
