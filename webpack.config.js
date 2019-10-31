@@ -2,12 +2,20 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const dotenv = require('dotenv');
 
-module.exports = () => {
-  const env = dotenv.config().parsed;
-  const envKeys = Object.keys(env).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(env[next]);
-    return prev;
-  }, {});
+module.exports = (otherEnv) => {
+  let envKeys = {};
+  if(dotenv.config().parsed) {
+    const env = dotenv.config().parsed;
+    envKeys = Object.keys(env).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(env[next]);
+      return prev;
+    }, {});
+  } else if (otherEnv) {
+    envKeys = Object.keys(otherEnv).reduce((prev, next) => {
+      prev[`process.env.${next}`] = JSON.stringify(otherEnv[next]);
+      return prev;
+    }, {});
+  }
 
   return {
     plugins: [
