@@ -23,4 +23,13 @@
   &:active {
     color: #000;
   }
+
+  &:disabled {
+    color: #b0bec5;
+    cursor: not-allowed;
+
+    &:hover {
+      color: #b0bec5;
+    }
+  }
 }
