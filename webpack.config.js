@@ -1,68 +1,53 @@
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const dotenv = require('dotenv');
+const Dotenv = require('dotenv-webpack');
 
-module.exports = (otherEnv) => {
-  let envKeys = {};
-  if(dotenv.config().parsed) {
-    const env = dotenv.config().parsed;
-    envKeys = Object.keys(env).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(env[next]);
-      return prev;
-    }, {});
-  } else if (otherEnv) {
-    envKeys = Object.keys(otherEnv).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(otherEnv[next]);
-      return prev;
-    }, {});
-  }
-
-  return {
-    plugins: [
-      new webpack.DefinePlugin(envKeys),
-      new HtmlWebPackPlugin({
-        template: "./src/index.html",
-        filename: "./index.html"
-      })
-    ],
-    devtool: 'cheap-module-source-map',
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: {
-          loader: "babel-loader"
-          }
-        },
-        {
-          test: /\.html$/,
-          use: [
-            {
-              loader: "html-loader"
-            }
-          ]
-        },
-        { test: /\.(scss|css)$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'] 
-        },
-        {
-          test: /\.(png|svg|jpg|gif|ico)$/,
-          use: ['file-loader']
-        },
-        {
-          test: [/\.eot$/, /\.ttf$/, /\.svg$/, /\.woff$/, /\.woff2$/],
-          use: ['file-loader']
+module.exports = {
+  plugins: [
+    new Dotenv({
+      systemvars: true
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    })
+  ],
+  devtool: 'cheap-module-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+        loader: "babel-loader"
         }
-      ]
-    },
-    devServer: {
-      contentBase: './src',
-      publicPath: '/',
-      port: 5000,
-      historyApiFallback: {
-        index: '/index.html'
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      },
+      { test: /\.(scss|css)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'] 
+      },
+      {
+        test: /\.(png|svg|jpg|gif|ico)$/,
+        use: ['file-loader']
+      },
+      {
+        test: [/\.eot$/, /\.ttf$/, /\.svg$/, /\.woff$/, /\.woff2$/],
+        use: ['file-loader']
       }
-    },
-  }
+    ]
+  },
+  devServer: {
+    contentBase: './src',
+    publicPath: '/',
+    port: 5000,
+    historyApiFallback: {
+      index: '/index.html'
+    }
+  },
 };
